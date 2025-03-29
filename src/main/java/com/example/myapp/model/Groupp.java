@@ -18,10 +18,10 @@ public class Groupp {
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 
-    /*@OneToMany(mappedBy = "group_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<client_in_group> groupClients;
+    @OneToMany(mappedBy = "groupp", cascade = CascadeType.ALL, fetch = FetchType.LAZY)    //!!!!!ВРЕМЕННО!!!!!
+    private Set<ClientInGroup> groupClients;
 
-    @OneToMany(mappedBy = "group_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    /*@OneToMany(mappedBy = "group_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<task> tasks;*/
 
     // Геттеры и сеттеры
@@ -49,20 +49,20 @@ public class Groupp {
         this.groupClients = clientGroups;
     }*/
 
-    /*public Set<Client> getClients() {
-        return groupClients.stream().map(client_in_group::getClient).collect(Collectors.toSet());
+    public Set<Client> getClients() {                                                           //!!!!!ВРЕМЕННО!!!!!
+        return groupClients.stream().map(ClientInGroup::getClient).collect(Collectors.toSet());
     }
 
     public void setClients(Set<Client> clients) {
         this.groupClients = clients.stream().map(client -> {
-            client_in_group cig = new client_in_group();
+            ClientInGroup cig = new ClientInGroup();
             cig.setClient(client);
             cig.setGroup(this);
             return cig;
         }).collect(Collectors.toSet());
     }
 
-    public Set<task> getTasks() {
+    /*public Set<task> getTasks() {
         return tasks;
     }
 

@@ -3,6 +3,7 @@ package com.example.myapp.model;
 // сущность клиента
 import jakarta.persistence.*;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -20,10 +21,10 @@ public class Client {
     @Column(name = "password", length = 50, nullable = false)
     private String password;
 
-    /*@OneToMany(mappedBy = "client_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<client_in_group> clientGroups;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY) //!!!!!ВРЕМЕННО!!!!!
+    private Set<ClientInGroup> clientGroups;
 
-    @OneToMany(mappedBy = "client_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    /*@OneToMany(mappedBy = "client_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<task> tasks;*/
 
     // Конструктор по умолчанию (обязателен для JPA)
@@ -49,20 +50,20 @@ public class Client {
         this.clientGroups = clientGroups;
     }*/
 
-    /*public Set<groupp> getGroups() {
-        return clientGroups.stream().map(client_in_group::getGroup).collect(Collectors.toSet());
+    public Set<Groupp> getGroups() {                                                          //!!!!!ВРЕМЕННО!!!!!
+        return clientGroups.stream().map(ClientInGroup::getGroup).collect(Collectors.toSet());
     }
 
-    public void setGroups(Set<groupp> groupps) {
+    public void setGroups(Set<Groupp> groupps) {
         this.clientGroups = groupps.stream().map(group -> {
-            client_in_group cig = new client_in_group();
+            ClientInGroup cig = new ClientInGroup();
             cig.setClient(this);
             cig.setGroup(group);
             return cig;
         }).collect(Collectors.toSet());
     }
 
-    public Set<task> getTasks() {
+    /*public Set<task> getTasks() {
         return tasks;
     }
 
@@ -82,6 +83,21 @@ public class Client {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+    /*@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(phone_number, client.phone_number);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(phone_number);
+    }*/
+
 
 
 }

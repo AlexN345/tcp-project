@@ -3,12 +3,13 @@ package com.example.myapp.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
 public class ClientGroupId implements Serializable {
 
-    @Column(name = "client_id")
-    private Long client_id;
+    @Column(name = "phone_number")
+    private String phone_number;
 
     @Column(name = "group_id")
     private Long group_id;
@@ -17,18 +18,18 @@ public class ClientGroupId implements Serializable {
     public ClientGroupId() {}
 
     // Конструктор с параметрами
-    public ClientGroupId(Long client_id, Long group_id) {
-        this.client_id = client_id;
+    public ClientGroupId(String phone_number, Long group_id) {
+        this.phone_number = phone_number;
         this.group_id = group_id;
     }
 
     // Геттеры и сеттеры, equals, hashCode
-    public Long getClientId() {
-        return client_id;
+    public String getClientNumber() {
+        return phone_number;
     }
 
-    public void setClientId(Long client_id) {
-        this.client_id = client_id;
+    public void setClientNumber(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public Long getGroupId() {
@@ -40,22 +41,23 @@ public class ClientGroupId implements Serializable {
     }
 
     // equals и hashCode
-    /*@Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         ClientGroupId that = (ClientGroupId) o;
 
-        if (!client_id.equals(that.client_id)) return false;
+        if (!phone_number.equals(that.phone_number)) return false;
         return group_id.equals(that.group_id);
     }
 
+
+
     @Override
     public int hashCode() {
-        int result = client_id.hashCode();
-        result = 31 * result + group_id.hashCode();
-        return result;
-    }*/
+        return Objects.hash(phone_number, group_id);
+    }
+
 }
 
