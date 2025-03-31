@@ -53,8 +53,8 @@ public class MyApp {
 
 
             // Выводим сохраненные данные
-            /*Client savedClient = clientService.getClientByNumber(client.getClientNumber());
-            System.out.println("Saved Client: " + savedClient);*/
+            Client savedClient = clientService.getClientByNumber(client.getClientNumber());
+            System.out.println("Saved Client: " + savedClient);
 
             // Выводим сохраненные данные
             Groupp savedGroupp = grouppService.getGroupById(groupp.getGroupId());
