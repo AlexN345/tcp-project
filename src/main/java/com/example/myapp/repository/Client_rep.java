@@ -6,13 +6,16 @@ package com.example.myapp.repository;
 import com.example.myapp.model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;//не нужно писать базовые CRUD-методы (Create, Read, Update, Delete) вручную
 import org.springframework.stereotype.Repository;//автоматически обрабатывает исключения, связанные с доступом к данным, и преобразует их в Spring-исключения
+import java.util.Optional;
 //позволяет Spring управлять этим классом как частью контекста приложения
 /*import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;*/
 @Repository
-public interface Client_rep extends JpaRepository<Client, String> {//Интерфейс client_rep расширяет (наследует) интерфейс JpaRepository. Сущность client, тип первичного ключа Long
+public interface Client_rep extends JpaRepository<Client, Long> {//Интерфейс client_rep расширяет (наследует) интерфейс JpaRepository. Сущность client, тип первичного ключа Long
 
+    Optional<Client> findByPhoneNumber(String phoneNumber);
+    boolean existsByPhoneNumber(String phoneNumber);
     /*
     //если бы небыло .JpaRepository
 

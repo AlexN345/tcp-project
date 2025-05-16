@@ -30,7 +30,7 @@ public class Groupp_cont {
 
     @PostMapping
     public Groupp createGroup(@RequestBody Groupp groupp) {
-        return groupp_serv.createGroup(groupp);
+        return groupp_serv.saveGroup(groupp);
     }
 
     @PutMapping("/{id}")

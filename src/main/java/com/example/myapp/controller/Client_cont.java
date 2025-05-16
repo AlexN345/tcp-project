@@ -29,27 +29,27 @@ public class Client_cont {
     }
 
 
-    @GetMapping("/{number}")
+    /*@GetMapping("/{number}")
     public Client getClientByNumber(@PathVariable String number) {
         return client_serv.getClientByNumber(number);
-    }
+    }*/
 
 
     @PostMapping
     public Client createClient(@RequestBody Client client) {
-        return client_serv.createClient(client);
+        return client_serv.saveClient(client);
     }
 
 
     @PutMapping("/{number}")
     public Client updateClient(@PathVariable String number, @RequestBody Client client) {
-        client.setClientNumber(number);
+        client.setPhoneNumber(number);
         return client_serv.updateClient(client);
     }
 
 
-    @DeleteMapping("/{number}")
-    public void deleteClient(@PathVariable String number) {
-        client_serv.deleteClient(number);
+    @DeleteMapping("/{Id}")
+    public void deleteClient(@PathVariable Long Id) {
+        client_serv.deleteClient(Id);
     }
 }

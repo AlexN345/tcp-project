@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+</head>
+<body>
+<h1>Вход</h1>
+
+<div th:if="${param.error}" style="color: red;">
+    Неверный телефон или пароль
+</div>
+
+<form th:action="@{/login}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+    <div>
+        <label>Телефон:</label>
+        <!-- Изменили th:field на name="username" для совместимости с Security -->
+        <input type="text" name="username" th:value="${entranceDto?.phone}" required>
+    </div>
+    <div>
+        <label>Пароль:</label>
+        <!-- Оставили name="password" как есть -->
+        <input type="password" name="password" th:value="${entranceDto?.password}" required>
+    </div>
+    <button type="submit">Войти</button>
+</form>
+
+<a href="/register">Нет аккаунта? Зарегистрироваться</a>
+</body>
+</html>
