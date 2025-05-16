@@ -8,36 +8,35 @@ import java.util.Objects;
 @Embeddable
 public class ClientGroupId implements Serializable {
 
-    @Column(name = "phone_number")
-    private String phone_number;
+    @Column(name = "client_id")
+    private Long clientId;
 
     @Column(name = "group_id")
-    private Long group_id;
+    private Long groupId;
 
-    // Конструктор по умолчанию (обязателен для JPA)
-    public ClientGroupId() {}
-
+    public ClientGroupId() {
+    }
     // Конструктор с параметрами
-    public ClientGroupId(String phone_number, Long group_id) {
-        this.phone_number = phone_number;
-        this.group_id = group_id;
+    public ClientGroupId(Long clientId, Long groupId) {
+        this.clientId = clientId;
+        this.groupId = groupId;
     }
 
     // Геттеры и сеттеры, equals, hashCode
-    public String getClientNumber() {
-        return phone_number;
+    public Long getClientId() {
+        return clientId;
     }
 
-    public void setClientNumber(String phone_number) {
-        this.phone_number = phone_number;
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
     public Long getGroupId() {
-        return group_id;
+        return groupId;
     }
 
-    public void setGroupId(Long group_id) {
-        this.group_id = group_id;
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 
     // equals и hashCode
@@ -48,15 +47,23 @@ public class ClientGroupId implements Serializable {
 
         ClientGroupId that = (ClientGroupId) o;
 
-        if (!phone_number.equals(that.phone_number)) return false;
-        return group_id.equals(that.group_id);
+        if (!clientId.equals(that.clientId)) return false;
+        return groupId.equals(that.groupId);
     }
 
 
 
     @Override
     public int hashCode() {
-        return Objects.hash(phone_number, group_id);
+        return Objects.hash(clientId, groupId);
+    }
+
+    @Override
+    public String toString() {
+        return "ClientGroupId{" +
+                "clientId='" + clientId + '\'' +
+                ", groupId=" + groupId +
+                '}';
     }
 
 }
