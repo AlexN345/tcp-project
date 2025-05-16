@@ -4,8 +4,10 @@
 
 package com.example.myapp.controller;
 
+import com.example.myapp.model.Client;
 import com.example.myapp.model.ClientGroupId;
 import com.example.myapp.model.ClientInGroup;
+import com.example.myapp.model.Groupp;
 import com.example.myapp.service.ClientInGroup_serv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,17 +37,18 @@ public class ClientInGroup_cont {
 
     @PostMapping
     public ClientInGroup createClientInGroup(@RequestBody ClientInGroup client_in_group) {
-        return client_in_group_serv.createClientInGroup(client_in_group);
+        return client_in_group_serv.saveClientInGroup(client_in_group);
     }
 
 
-    @DeleteMapping("/{groupId}/{clientId}")
+    /*@DeleteMapping("/{groupId}/{clientId}")//пока не знаю, как сделать
     public void deleteClientInGroup(
             @PathVariable String phone_number,
             @PathVariable Long groupId) {
-        ClientGroupId key = new ClientGroupId(phone_number, groupId);
+        Client client = clientService.getClientByNumber("89178127389");
+        Groupp groupp = grouppService.getGroupById(27L);
         client_in_group_serv.deleteClientInGroup(key);
-    }
+    }*/
 
     /*@GetMapping("/{groupId}/{clientId}")// пока нам это не нужно, так как класс состоит только из Key, если будем добавлять - раскомментируем
     public client_in_group getClientInGroupById(
