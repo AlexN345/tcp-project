@@ -1,0 +1,94 @@
+
+body {
+    background-color: #3A2016;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(229, 103, 29, 0.2) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(242, 142, 83, 0.15) 0%, transparent 30%),
+        linear-gradient(to bottom, #3A2016, #2C150D);
+    min-height: 100vh;
+    color: #FFF3E0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    background: #F8ECE0;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(172, 101, 59, 0.4);
+    border: 1px solid #E5671D;
+}
+
+h2 {
+    color: #5D2E15;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #FFD8B6;
+}
+
+/* Форма */
+.form-label {
+    color: #5D2E15;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-select, .form-control {
+    border: 1px solid #FFD8B6;
+    background-color: #FFF9F2;
+    color: #5D2E15;
+    padding: 12px 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.form-select:focus, .form-control:focus {
+    border-color: #E5671D;
+    box-shadow: 0 0 0 3px rgba(229, 103, 29, 0.2);
+    background-color: white;
+    outline: none;
+}
+
+/* Кнопки */
+.btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #E5671D, #AC653B);
+    border: none;
+    color: white;
+    box-shadow: 0 4px 8px rgba(229, 103, 29, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to right, #F28E53, #E5671D);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(229, 103, 29, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(to right, #AC653B, #963E0A);
+    border: none;
+    color: white;
+    margin-left: 10px;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(to right, #963E0A, #AC653B);
+    color: white;
+}
+
+/* Группировка кнопок */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания группы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="/css/tasks.css" rel="stylesheet">
+</head>
+<body>
+<div class="container main-container">
+    <div class="tasks-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 th:text="${group.name}"></h2>
+            <div class="header-actions">
+                <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#membersModal">
+                    Участники
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="week-grid">
+        <div class="day-header" th:each="day : ${weekDays}">
+            <div class="day-name" th:text="${#temporals.format(day, 'E')}"></div>
+            <div class="day-date" th:text="${#temporals.format(day, 'dd.MM')}"></div>
+        </div>
+
+        <div class="tasks-container" th:each="day : ${weekDays}">
+            <div class="add-task-container mb-2">
+                <a th:href="@{/tasks/add(groupId=${group.groupId}, date=${day})}"
+                   class="btn btn-sm btn-outline-success">
+                    <i class="fas fa-plus"></i> Добавить
+                </a>
+            </div>
+            <div class="task-list">
+                <div class="task-item" th:each="task : ${tasks}" th:if="${task.date.equals(#temporals.format(day, 'yyyy-MM-dd'))}">
+                    <div class="task-info">
+                        <div class="task-name" th:text="${task.responsibilityName}"></div>
+                        <div class="task-executor" th:text="${task.executorName}"></div>
+                    </div>
+                    <div class="task-action" th:if="${task.authorId == currentUser.clientId}">
+                        <form th:action="@{/tasks/delete}" method="post">
+                            <input type="hidden" name="taskId" th:value="${task.taskId}">
+                            <input type="hidden" name="groupId" th:value="${group.groupId}">
+                            <input type="hidden" name="date" th:value="${startDate}">
+                            <button type="submit" class="btn-delete" title="Удалить">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="week-navigation">
+        <a th:href="@{/tasks(groupId=${group.groupId}, date=${startDate.minusWeeks(1)})}" class="btn btn-outline-secondary">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <a th:href="@{/tasks(groupId=${group.groupId}, date=${startDate.plusWeeks(1)})}" class="btn btn-outline-secondary ms-2">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+    </div>
+
+    <div class="actions">
+        <a th:href="@{/groups}" class="btn btn-secondary">Назад</a>
+    </div>
+
+    <!-- Модальное окно участников -->
+    <div class="modal fade" id="membersModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Участники группы</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            th:each="member : ${groupMembers}">
+                            <span th:text="${member.name}"></span>
+                            <span class="badge bg-primary rounded-pill"
+                                  th:text="${member.clientId == currentUser.clientId} ? 'Вы' : ''"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

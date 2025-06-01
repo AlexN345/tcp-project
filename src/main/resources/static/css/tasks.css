@@ -1,0 +1,234 @@
+
+body {
+    background-color: #3A2016;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(229, 103, 29, 0.2) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(242, 142, 83, 0.15) 0%, transparent 30%),
+        linear-gradient(to bottom, #3A2016, #2C150D);
+    min-height: 100vh;
+    color: #FFF3E0;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #F8ECE0;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(172, 101, 59, 0.4);
+    border: 1px solid #E5671D;
+}
+
+
+.tasks-header {
+    padding: 20px;
+    border-bottom: 1px solid #FFD8B6;
+    margin-bottom: 25px;
+}
+
+.tasks-header h2 {
+    color: #5D2E15;
+    font-weight: 600;
+}
+
+.header-actions .btn {
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 500;
+}
+
+.btn-outline-primary {
+    border-color: #E5671D;
+    color: #E5671D;
+}
+
+.btn-outline-primary:hover {
+    background-color: rgba(229, 103, 29, 0.1);
+}
+
+.btn-primary {
+    background-color: #E5671D;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #F28E53;
+}
+
+/* Сетка недели */
+.week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.day-header {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 216, 182, 0.2);
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.day-name {
+    font-weight: 600;
+    color: #5D2E15;
+}
+
+.day-date {
+    color: #AC653B;
+    font-size: 0.9em;
+}
+
+/* Задания */
+.tasks-container {
+    min-height: 200px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    border: 1px solid #FFD8B6;
+}
+
+.add-task-container {
+    text-align: right;
+}
+
+.btn-outline-success {
+    border-color: #4CAF50;
+    color: #4CAF50;
+    font-size: 0.8em;
+    padding: 3px 8px;
+}
+
+.btn-outline-success:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.task-list {
+    margin-top: 10px;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: white;
+    border-radius: 8px;
+    border-left: 4px solid #E5671D;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.task-info {
+    flex-grow: 1;
+}
+
+.task-name {
+    font-weight: 500;
+    color: #5D2E15;
+    margin-bottom: 3px;
+}
+
+.task-executor {
+    font-size: 0.8em;
+    color: #AC653B;
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: #A82C0D;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Навигация и кнопки */
+.week-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.week-navigation .btn {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: #E5671D;
+    color: #E5671D;
+}
+
+.week-navigation .btn:hover {
+    background-color: rgba(229, 103, 29, 0.1);
+}
+
+.actions {
+    text-align: center;
+}
+
+.actions .btn-secondary {
+    background-color: #AC653B;
+    border: none;
+    color: white;
+    padding: 8px 20px;
+}
+
+/* Модальные окна */
+.modal-content {
+    border-radius: 16px;
+    border: 1px solid #E5671D;
+    background: #F8ECE0;
+}
+
+.modal-header {
+    border-bottom: 1px solid #FFD8B6;
+    padding: 20px;
+}
+
+.modal-title {
+    color: #5D2E15;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.list-group-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #FFD8B6;
+    color: #5D2E15;
+}
+
+.badge {
+    background-color: #E5671D !important;
+}
+
+.modal-footer {
+    border-top: 1px solid #FFD8B6;
+    padding: 15px 20px;
+}
+
+/* Форма добавления задания */
+.form-select {
+    border: 1px solid #FFD8B6;
+    background-color: #FFF9F2;
+    color: #5D2E15;
+    padding: 10px 15px;
+}
+
+.form-select:focus {
+    border-color: #E5671D;
+    box-shadow: 0 0 0 3px rgba(229, 103, 29, 0.2);
+}
+
+.form-label {
+    color: #5D2E15;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
