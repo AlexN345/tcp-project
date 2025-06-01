@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашняя страница</title>
+</head>
+<body>
+<h1>Добро пожаловать, <span th:text="${userData.userName()}"></span>!</h1>
+<h2>Ваши данные:</h2>
+<p>ID: <span th:text="${userData.userId()}"></span></p>
+<p>Группы:</p>
+<ul th:if="${userData.groups() != null and !userData.groups().isEmpty()}">
+    <li th:each="group : ${userData.groups()}">
+        <span th:text="${group.groupName()}"></span> (Участников: <span th:text="${group.memberCount()}"></span>)
+    </li>
+</ul>
+<p th:if="${userData.groups() == null or userData.groups().isEmpty()}">У вас нет групп.</p>
+</body>
+</html>
