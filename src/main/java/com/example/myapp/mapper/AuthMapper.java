@@ -1,6 +1,11 @@
 package com.example.myapp.mapper;
 
+<<<<<<< HEAD
 import com.example.myapp.dto.auth.*;
+=======
+import com.example.myapp.dto.request.*;
+import com.example.myapp.dto.response.*;
+>>>>>>> origin/master
 import com.example.myapp.model.*;
 import org.mapstruct.*;
 
@@ -14,8 +19,13 @@ public interface AuthMapper {
     @Mapping(target = "password", ignore = true) // Пароль будем обрабатывать отдельно
     Client toClient(RegistrationQDTO dto);
 
+<<<<<<< HEAD
     // Маппинг из Client в EntranceSDTO (JwtResponse)
     /*@Mapping(target = "userId", source = "clientId")
+=======
+    // Маппинг из Client в EntranceSDTO
+    @Mapping(target = "userId", source = "clientId")
+>>>>>>> origin/master
     @Mapping(target = "userName", source = "name")
     @Mapping(target = "authToken", ignore = true) // Токен генерируется отдельно
     EntranceSDTO toEntranceSDTO(Client client);
@@ -39,5 +49,9 @@ public interface AuthMapper {
     // Маппинг для GroupInfo
     @Mapping(target = "groupName", source = "name")
     @Mapping(target = "memberCount", expression = "java(group.getClients().size())")
+<<<<<<< HEAD
     EntranceSDTO.GroupInfo toGroupInfo(Groupp group);*/
+=======
+    EntranceSDTO.GroupInfo toGroupInfo(Groupp group);
+>>>>>>> origin/master
 }
